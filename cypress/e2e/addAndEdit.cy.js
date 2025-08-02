@@ -1,5 +1,5 @@
 describe('TC1 - Add Employee', () => {
-  it('Should add an employe and validate if is displayed', () => {
+  it('Should add an employe and edit it', () => {
     cy.visit('https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Account/Login');
     cy.get('input[id="Username"]').type('TestUser768');
     cy.get('input[id="Password"]').type('|G!C_Ha6N)nz');

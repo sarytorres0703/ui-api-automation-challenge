@@ -1,8 +1,8 @@
 describe('API TC1 - Add Employee', () => {
   it('Should add an employe and validate if is stored by post and get methods', () => {
     const newEmployee = {
-      firstName: 'APIFistTest',
-      lastName: 'APILastTest',
+      firstName: 'APIAddTest',
+      lastName: 'APIAddTest',
       dependents: 3
     };
     cy.request({
