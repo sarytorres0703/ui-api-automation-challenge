@@ -1,4 +1,4 @@
-describe('TC1 - Add Employee', () => {
+describe('TC2 - Add and Delete an Employee', () => {
   it('Should add an employe and delete it', () => {
     cy.visit('https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/Account/Login');
     cy.get('input[id="Username"]').type('TestUser768');
@@ -14,5 +14,6 @@ describe('TC1 - Add Employee', () => {
     cy.contains('LastDelete').should('exist');
     cy.get('i[class="fas fa-times"]').eq(2).click();
     cy.get('button[id="deleteEmployee"]').click();
+    cy.contains('FirstDelete').should('not.exist');
   });
 });
