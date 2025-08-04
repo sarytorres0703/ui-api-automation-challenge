@@ -13,6 +13,8 @@ describe('TC1 - Add Employee', () => {
     cy.contains('FirstEdit').should('exist');
     cy.contains('LastEdit').should('exist');
     cy.get('i[class="fas fa-edit"]').eq(2).click();
+    cy.get('input[id="firstName"]').clear();
+    cy.get('input[id="lastName"]').clear();
     cy.get('input[id="firstName"]').type('FirstEdited');
     cy.get('input[id="lastName"]').type('LastEdited');
     cy.get('button[id="updateEmployee"]').click();

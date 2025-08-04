@@ -12,9 +12,9 @@ describe('API TC3 - Add Employee and edit it', () => {
     };
     cy.request({
       method: 'POST',
-      url: 'https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/Employees',
+      url: Cypress.env('API_URL'),
       headers: {
-        Authorization: 'Basic VGVzdFVzZXI3Njg6fEchQ19IYTZOKW56'
+        Authorization: Cypress.env('API_AUTHORIZATION')
       },
       body: newEmployee
     }).then((response) => {
@@ -23,9 +23,9 @@ describe('API TC3 - Add Employee and edit it', () => {
       expect(createdId).to.exist;
       cy.request({
         method: 'PUT',
-        url: 'https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/Employees',
+        url: Cypress.env('API_URL'),
         headers: {
-          Authorization: 'Basic VGVzdFVzZXI3Njg6fEchQ19IYTZOKW56'
+          Authorization: Cypress.env('API_AUTHORIZATION')
         },
         body: {
           id: createdId,
@@ -35,9 +35,9 @@ describe('API TC3 - Add Employee and edit it', () => {
         expect(updateResponse.status).to.eq(200);
         cy.request({
           method: 'GET',
-          url: 'https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/Employees',
+          url: Cypress.env('API_URL'),
           headers: {
-            Authorization: 'Basic VGVzdFVzZXI3Njg6fEchQ19IYTZOKW56'
+            Authorization: Cypress.env('API_AUTHORIZATION')
           }
         }).then((getResponse) => {
           const employees = getResponse.body;

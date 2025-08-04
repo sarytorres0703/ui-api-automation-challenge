@@ -7,9 +7,9 @@ describe('API TC2 - Add and delete an Employee', () => {
     };
     cy.request({
       method: 'POST',
-      url: 'https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/Employees',
+      url: Cypress.env('API_URL'),
       headers: {
-        Authorization: 'Basic VGVzdFVzZXI3Njg6fEchQ19IYTZOKW56'
+        Authorization: Cypress.env('API_AUTHORIZATION')
       },
       body: newEmployee
     }).then((response) => {
@@ -18,17 +18,17 @@ describe('API TC2 - Add and delete an Employee', () => {
       expect(createdId).to.exist;
       cy.request({
         method: 'DELETE',
-        url: `https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/Employees/${createdId}`,
+        url: Cypress.env('API_URL')+`/${createdId}`,
         headers: {
-          Authorization: 'Basic VGVzdFVzZXI3Njg6fEchQ19IYTZOKW56'
+          Authorization: Cypress.env('API_AUTHORIZATION')
         }
       }).then((deleteResponse) => {
         expect(deleteResponse.status).to.eq(200);
         cy.request({
           method: 'GET',
-          url: 'https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/Employees',
+          url: Cypress.env('API_URL'),
           headers: {
-            Authorization: 'Basic VGVzdFVzZXI3Njg6fEchQ19IYTZOKW56'
+            Authorization: Cypress.env('API_AUTHORIZATION')
           }
         }).then((getResponse) => {
           const employees = getResponse.body;

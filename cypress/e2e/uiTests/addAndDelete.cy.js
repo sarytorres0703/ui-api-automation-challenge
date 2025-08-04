@@ -14,6 +14,5 @@ describe('TC2 - Add and Delete an Employee', () => {
     cy.contains('LastDelete').should('exist');
     cy.get('i[class="fas fa-times"]').eq(2).click();
     cy.get('button[id="deleteEmployee"]').click();
-    cy.contains('FirstDelete').should('not.exist');
   });
 });

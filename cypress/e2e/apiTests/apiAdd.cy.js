@@ -1,5 +1,6 @@
 describe('API TC1 - Add Employee', () => {
   it('Should add an employe and validate if is stored by post and get methods', () => {
+    console.log(Cypress.env('API_URL')); 
     const newEmployee = {
       firstName: 'APIAddTest',
       lastName: 'APIAddTest',
@@ -7,9 +8,9 @@ describe('API TC1 - Add Employee', () => {
     };
     cy.request({
       method: 'POST',
-      url: 'https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/Employees',
+      url: Cypress.env('API_URL'),
       headers: {
-        Authorization: 'Basic VGVzdFVzZXI3Njg6fEchQ19IYTZOKW56'
+        Authorization: Cypress.env('API_AUTHORIZATION')
       },
       body: newEmployee
     }).then((response) => {
@@ -18,9 +19,9 @@ describe('API TC1 - Add Employee', () => {
       expect(createdId).to.exist;
       cy.request({
         method: 'GET',
-        url: 'https://wmxrwq14uc.execute-api.us-east-1.amazonaws.com/Prod/api/Employees',
+        url: Cypress.env('API_URL'),
         headers: {
-          Authorization: 'Basic VGVzdFVzZXI3Njg6fEchQ19IYTZOKW56'
+          Authorization: Cypress.env('API_AUTHORIZATION')
         }
       }).then((getResponse) => {
         const employees = getResponse.body;
