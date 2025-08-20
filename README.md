@@ -46,3 +46,9 @@ If you used npx cypress run: you will see the results in the terminal.
 
 
 *** If the tests fail, double-check that the .env file is properly configured with the correct credentials.
+
+Config Cypress variables 
+- Install dotenv
+    npm install dotenv
+    modify .env.sample with your own credentials
+    
